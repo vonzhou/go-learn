@@ -22,8 +22,9 @@ func main() {
 	//!-array
 
 	//!+slice
+	// 注意slice类型的变量s和数组类型的变量a的初始化语法的差异
 	s := []int{0, 1, 2, 3, 4, 5}
-	// Rotate s left by two positions.
+	// Rotate s left by two positions. 调用3次 reverse 来实现列表的旋转 rotate
 	reverse(s[:2])
 	reverse(s[2:])
 	reverse(s)

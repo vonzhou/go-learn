@@ -23,6 +23,7 @@ func intsToString(values []int) string {
 		fmt.Fprintf(&buf, "%d", v)
 	}
 	buf.WriteByte(']')
+
 	return buf.String()
 }
 

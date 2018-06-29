@@ -11,8 +11,6 @@ type Expr interface {
 	Check(vars map[Var]bool) error
 }
 
-//!+ast
-
 // A Var identifies a variable, e.g., x.
 type Var string
 
@@ -36,5 +34,3 @@ type call struct {
 	fn   string // one of "pow", "sin", "sqrt"
 	args []Expr
 }
-
-//!-ast

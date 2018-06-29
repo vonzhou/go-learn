@@ -8,7 +8,6 @@ package main
 
 import "fmt"
 
-//!+f
 func main() {
 	f(3)
 }
@@ -18,31 +17,3 @@ func f(x int) {
 	defer fmt.Printf("defer %d\n", x)
 	f(x - 1)
 }
-
-//!-f
-
-/*
-//!+stdout
-f(3)
-f(2)
-f(1)
-defer 1
-defer 2
-defer 3
-//!-stdout
-
-//!+stderr
-panic: runtime error: integer divide by zero
-main.f(0)
-        src/gopl.io/ch5/defer1/defer.go:14
-main.f(1)
-        src/gopl.io/ch5/defer1/defer.go:16
-main.f(2)
-        src/gopl.io/ch5/defer1/defer.go:16
-
-main.f(3)
-        src/gopl.io/ch5/defer1/defer.go:16
-main.main()
-        src/gopl.io/ch5/defer1/defer.go:10
-//!-stderr
-*/

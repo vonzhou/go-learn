@@ -8,7 +8,8 @@ package main
 
 import "fmt"
 
-//!+
+import "time"
+
 func main() {
 	naturals := make(chan int)
 	squares := make(chan int)
@@ -16,6 +17,7 @@ func main() {
 	// Counter
 	go func() {
 		for x := 0; ; x++ {
+			time.Sleep(time.Second)
 			naturals <- x
 		}
 	}()
@@ -33,5 +35,3 @@ func main() {
 		fmt.Println(<-squares)
 	}
 }
-
-//!-

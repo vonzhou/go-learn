@@ -30,4 +30,10 @@ func main() {
 	values := []int{1, 2, 3, 4}
 	fmt.Println(sum(values...)) // "10"
 	//!-slice
+
+	fmt.Println("%T", f)
+	fmt.Println("%T", g)
 }
+
+func f(...int) {}
+func g([]int)  {}

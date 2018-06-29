@@ -11,14 +11,9 @@ import (
 	"math"
 )
 
-//!+env
-
 type Env map[Var]float64
 
-//!-env
-
-//!+Eval1
-
+// for variable , get from the context
 func (v Var) Eval(env Env) float64 {
 	return env[v]
 }
@@ -26,10 +21,6 @@ func (v Var) Eval(env Env) float64 {
 func (l literal) Eval(_ Env) float64 {
 	return float64(l)
 }
-
-//!-Eval1
-
-//!+Eval2
 
 func (u unary) Eval(env Env) float64 {
 	switch u.op {
@@ -66,5 +57,3 @@ func (c call) Eval(env Env) float64 {
 	}
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
 }
-
-//!-Eval2

@@ -10,8 +10,6 @@ import (
 	"fmt"
 )
 
-//!+bytecounter
-
 type ByteCounter int
 
 func (c *ByteCounter) Write(p []byte) (int, error) {
@@ -19,10 +17,7 @@ func (c *ByteCounter) Write(p []byte) (int, error) {
 	return len(p), nil
 }
 
-//!-bytecounter
-
 func main() {
-	//!+main
 	var c ByteCounter
 	c.Write([]byte("hello"))
 	fmt.Println(c) // "5", = len("hello")
@@ -31,5 +26,4 @@ func main() {
 	var name = "Dolly"
 	fmt.Fprintf(&c, "hello, %s", name)
 	fmt.Println(c) // "12", = len("hello, Dolly")
-	//!-main
 }

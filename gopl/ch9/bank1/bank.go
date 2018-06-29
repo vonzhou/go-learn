@@ -2,7 +2,6 @@
 // License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 // See page 261.
-//!+
 
 // Package bank provides a concurrency-safe bank with one account.
 package bank
@@ -27,5 +26,3 @@ func teller() {
 func init() {
 	go teller() // start the monitor goroutine
 }
-
-//!-

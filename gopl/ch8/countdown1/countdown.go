@@ -11,9 +11,9 @@ import (
 	"time"
 )
 
-//!+
 func main() {
 	fmt.Println("Commencing countdown.")
+	// return a channel
 	tick := time.Tick(1 * time.Second)
 	for countdown := 10; countdown > 0; countdown-- {
 		fmt.Println(countdown)
@@ -21,8 +21,6 @@ func main() {
 	}
 	launch()
 }
-
-//!-
 
 func launch() {
 	fmt.Println("Lift off!")

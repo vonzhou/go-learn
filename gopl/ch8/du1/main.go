@@ -3,8 +3,6 @@
 
 // See page 247.
 
-//!+main
-
 // The du1 command computes the disk usage of the files in a directory.
 package main
 
@@ -46,10 +44,6 @@ func printDiskUsage(nfiles, nbytes int64) {
 	fmt.Printf("%d files  %.1f GB\n", nfiles, float64(nbytes)/1e9)
 }
 
-//!-main
-
-//!+walkDir
-
 // walkDir recursively walks the file tree rooted at dir
 // and sends the size of each found file on fileSizes.
 func walkDir(dir string, fileSizes chan<- int64) {
@@ -72,8 +66,6 @@ func dirents(dir string) []os.FileInfo {
 	}
 	return entries
 }
-
-//!-walkDir
 
 // The du1 variant uses two goroutines and
 // prints the total after every file is found.

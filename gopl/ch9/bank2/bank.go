@@ -24,5 +24,3 @@ func Balance() int {
 	<-sema // release token
 	return b
 }
-
-//!-

@@ -7,7 +7,6 @@
 package main
 
 /*
-//!+values
 package url
 
 // Values maps a string key to a list of values.
@@ -27,7 +26,6 @@ func (v Values) Get(key string) string {
 func (v Values) Add(key, value string) {
 	v[key] = append(v[key], value)
 }
-//!-values
 */
 
 import (
@@ -36,7 +34,6 @@ import (
 )
 
 func main() {
-	//!+main
 	m := url.Values{"lang": {"en"}} // direct construction
 	m.Add("item", "1")
 	m.Add("item", "2")
@@ -49,5 +46,4 @@ func main() {
 	m = nil
 	fmt.Println(m.Get("item")) // ""
 	m.Add("item", "3")         // panic: assignment to entry in nil map
-	//!-main
 }

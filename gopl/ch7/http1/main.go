@@ -12,8 +12,6 @@ import (
 	"net/http"
 )
 
-//!+main
-
 func main() {
 	db := database{"shoes": 50, "socks": 5}
 	log.Fatal(http.ListenAndServe("localhost:8000", db))
@@ -31,10 +29,7 @@ func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-//!-main
-
 /*
-//!+handler
 package http
 
 type Handler interface {
@@ -42,5 +37,4 @@ type Handler interface {
 }
 
 func ListenAndServe(address string, h Handler) error
-//!-handler
 */

@@ -14,7 +14,6 @@ import (
 	"time"
 )
 
-//!+main
 type Track struct {
 	Title  string
 	Artist string

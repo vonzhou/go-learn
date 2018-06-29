@@ -30,6 +30,12 @@ func main() {
 	data := []string{"one", "", "three"}
 	fmt.Printf("%q\n", nonempty(data)) // `["one" "three"]`
 	fmt.Printf("%q\n", data)           // `["one" "three" "three"]`
+
+	// 这样使用
+	data1 := []string{"one", "", "three"}
+	data1 = nonempty(data1)
+	fmt.Printf("%q\n", data1)
+
 	//!-main
 }
 

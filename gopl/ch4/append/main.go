@@ -8,6 +8,7 @@ package main
 
 import "fmt"
 
+// 支持变长参数
 func appendslice(x []int, y ...int) []int {
 	var z []int
 	zlen := len(x) + len(y)

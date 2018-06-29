@@ -14,6 +14,7 @@ import (
 
 func main() {
 	db := database{"shoes": 50, "socks": 5}
+	fmt.Println("start server.....")
 	log.Fatal(http.ListenAndServe("localhost:8000", db))
 }
 
@@ -23,8 +24,8 @@ func (d dollars) String() string { return fmt.Sprintf("$%.2f", d) }
 
 type database map[string]dollars
 
-//!+handler
 func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	fmt.Printf("request url : %s\n", req.URL)
 	switch req.URL.Path {
 	case "/list":
 		for item, price := range db {
@@ -38,11 +39,9 @@ func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 			fmt.Fprintf(w, "no such item: %q\n", item)
 			return
 		}
-		fmt.Fprintf(w, "%s\n", price)
+		fmt.Fprintf(w, "%s is %s\n", item, price)
 	default:
 		w.WriteHeader(http.StatusNotFound) // 404
 		fmt.Fprintf(w, "no such page: %s\n", req.URL)
 	}
 }
-
-//!-handler

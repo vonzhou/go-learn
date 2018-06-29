@@ -11,7 +11,6 @@ import (
 	"math"
 )
 
-//!+decl
 import "image/color"
 
 type Point struct{ X, Y float64 }
@@ -21,9 +20,13 @@ type ColoredPoint struct {
 	Color color.RGBA
 }
 
-//!-decl
-
 func (p Point) Distance(q Point) float64 {
+	dX := q.X - p.X
+	dY := q.Y - p.Y
+	return math.Sqrt(dX*dX + dY*dY)
+}
+
+func Distance(p, q Point) float64 {
 	dX := q.X - p.X
 	dY := q.Y - p.Y
 	return math.Sqrt(dX*dX + dY*dY)
@@ -35,7 +38,6 @@ func (p *Point) ScaleBy(factor float64) {
 }
 
 func main() {
-	//!+main
 	red := color.RGBA{255, 0, 0, 255}
 	blue := color.RGBA{0, 0, 255, 255}
 	var p = ColoredPoint{Point{1, 1}, red}
@@ -54,10 +56,13 @@ func main() {
 */
 
 func init() {
-	//!+methodexpr
+	fmt.Println("------------------------")
 	p := Point{1, 2}
 	q := Point{4, 6}
 
+	fmt.Println(Distance(p, q))
+	dis := Distance
+	fmt.Printf("%T\n", dis)      // func(main.Point, main.Point) float64 ,
 	distance := Point.Distance   // method expression
 	fmt.Println(distance(p, q))  // "5"
 	fmt.Printf("%T\n", distance) // "func(Point, Point) float64"
@@ -66,14 +71,14 @@ func init() {
 	scale(&p, 2)
 	fmt.Println(p)            // "{2 4}"
 	fmt.Printf("%T\n", scale) // "func(*Point, float64)"
-	//!-methodexpr
+	fmt.Println("--------------------------")
 }
 
 func init() {
+	fmt.Println("+++++++++++++++++++++++++++++")
 	red := color.RGBA{255, 0, 0, 255}
 	blue := color.RGBA{0, 0, 255, 255}
 
-	//!+indirect
 	type ColoredPoint struct {
 		*Point
 		Color color.RGBA
@@ -85,5 +90,5 @@ func init() {
 	q.Point = p.Point                 // p and q now share the same Point
 	p.ScaleBy(2)
 	fmt.Println(*p.Point, *q.Point) // "{2 2} {2 2}"
-	//!-indirect
+	fmt.Println("+++++++++++++++++++++++++++++++")
 }

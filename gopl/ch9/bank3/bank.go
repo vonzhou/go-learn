@@ -6,7 +6,6 @@
 // Package bank provides a concurrency-safe single-account bank.
 package bank
 
-//!+
 import "sync"
 
 var (
@@ -16,6 +15,7 @@ var (
 
 func Deposit(amount int) {
 	mu.Lock()
+	// 中间如果出现panic ， 锁能释放吗？
 	balance = balance + amount
 	mu.Unlock()
 }
@@ -26,5 +26,3 @@ func Balance() int {
 	mu.Unlock()
 	return b
 }
-
-//!-

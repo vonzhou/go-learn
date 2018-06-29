@@ -31,6 +31,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "charcount: %v\n", err)
 			os.Exit(1)
 		}
+		// 无效的 UTF-8 编码
 		if r == unicode.ReplacementChar && n == 1 {
 			invalid++
 			continue

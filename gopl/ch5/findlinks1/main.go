@@ -7,6 +7,7 @@
 // Findlinks1 prints the links in an HTML document read from standard input.
 package main
 
+// 先通过 go get golang.org/x/net/html 安装扩展库
 import (
 	"fmt"
 	"os"
