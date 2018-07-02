@@ -3,7 +3,6 @@
 
 // Test of echo command.  Run with: go test gopl.io/ch11/echo
 
-//!+
 package main
 
 import (
@@ -41,5 +40,3 @@ func TestEcho(t *testing.T) {
 		}
 	}
 }
-
-//!-

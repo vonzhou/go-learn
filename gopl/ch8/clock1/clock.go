@@ -2,7 +2,6 @@
 // License: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 // See page 219.
-//!+
 
 // Clock1 is a TCP server that periodically writes the time.
 package main
@@ -40,4 +39,3 @@ func handleConn(c net.Conn) {
 	}
 }
 
-//!-

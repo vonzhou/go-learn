@@ -17,7 +17,6 @@ import (
 	"time"
 )
 
-//!+1
 var done = make(chan struct{})
 
 func cancelled() bool {
@@ -29,8 +28,6 @@ func cancelled() bool {
 	}
 }
 
-//!-1
-
 func main() {
 	// Determine the initial directories.
 	roots := os.Args[1:]
@@ -38,13 +35,11 @@ func main() {
 		roots = []string{"."}
 	}
 
-	//!+2
 	// Cancel traversal when input is detected.
 	go func() {
 		os.Stdin.Read(make([]byte, 1)) // read a single byte
 		close(done)
 	}()
-	//!-2
 
 	// Traverse each root of the file tree in parallel.
 	fileSizes := make(chan int64)
@@ -62,7 +57,6 @@ func main() {
 	tick := time.Tick(500 * time.Millisecond)
 	var nfiles, nbytes int64
 loop:
-	//!+3
 	for {
 		select {
 		case <-done:

@@ -4,7 +4,6 @@
 // See page 311.
 
 // Package storage is part of a hypothetical cloud storage server.
-//!+main
 package storage
 
 import (
@@ -26,6 +25,7 @@ const hostname = "smtp.example.com"
 const template = `Warning: you are using %d bytes of storage,
 %d%% of your quota.`
 
+// quota 配额
 func CheckQuota(username string) {
 	used := bytesInUse(username)
 	const quota = 1000000000 // 1GB
@@ -41,5 +41,3 @@ func CheckQuota(username string) {
 		log.Printf("smtp.SendMail(%s) failed: %s", username, err)
 	}
 }
-
-//!-main

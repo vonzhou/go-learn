@@ -40,5 +40,3 @@ func (memo *Memo) Get(key string) (value interface{}, err error) {
 	memo.mu.Unlock()
 	return res.value, res.err
 }
-
-//!-

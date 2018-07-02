@@ -7,7 +7,7 @@
 // Package word provides utilities for word games.
 package word
 
-// IsPalindrome reports whether s reads the same forward and backward.
+// IsPalindrome reports whether s reads the same forward and backward. 回文字符串
 // (Our first attempt.)
 func IsPalindrome(s string) bool {
 	for i := range s {

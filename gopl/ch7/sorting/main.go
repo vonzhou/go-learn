@@ -39,7 +39,6 @@ func length(s string) time.Duration {
 
 //!-main
 
-//!+printTracks
 func printTracks(tracks []*Track) {
 	const format = "%v\t%v\t%v\t%v\t%v\t\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)
@@ -51,25 +50,17 @@ func printTracks(tracks []*Track) {
 	tw.Flush() // calculate column widths and print table
 }
 
-//!-printTracks
-
-//!+artistcode
 type byArtist []*Track
 
 func (x byArtist) Len() int           { return len(x) }
 func (x byArtist) Less(i, j int) bool { return x[i].Artist < x[j].Artist }
 func (x byArtist) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
 
-//!-artistcode
-
-//!+yearcode
 type byYear []*Track
 
 func (x byYear) Len() int           { return len(x) }
 func (x byYear) Less(i, j int) bool { return x[i].Year < x[j].Year }
 func (x byYear) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
-
-//!-yearcode
 
 func main() {
 	fmt.Println("byArtist:")

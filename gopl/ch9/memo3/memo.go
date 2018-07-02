@@ -27,8 +27,7 @@ func New(f Func) *Memo {
 	return &Memo{f: f, cache: make(map[string]result)}
 }
 
-//!+
-
+//  减小了锁的粒度
 func (memo *Memo) Get(key string) (value interface{}, err error) {
 	memo.mu.Lock()
 	res, ok := memo.cache[key]
@@ -44,5 +43,3 @@ func (memo *Memo) Get(key string) (value interface{}, err error) {
 	}
 	return res.value, res.err
 }
-
-//!-
